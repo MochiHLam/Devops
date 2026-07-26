@@ -1,6 +1,12 @@
-backend/node_modules/
+**/node_modules/
 
-frontend/node_modules/
+.env
+.env.local
+
+dist/
+build/
 
 .vscode/
+
 *.log
+*.tmp
