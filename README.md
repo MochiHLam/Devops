@@ -1,5 +1,17 @@
-# DevOps Learning
+# DevOps Learning Project
 
-Learning Linux, Git, Docker and AWS.
+## Tech Stack
 
-Hi
+## Project Structure
+
+## Docker
+
+## Run locally
+
+## Docker Build
+
+## Docker Compose
+
+## CI/CD
+
+## Author
