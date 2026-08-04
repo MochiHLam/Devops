@@ -19,12 +19,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/devops-backend:latest
-            docker stop devops-backend || true
-            docker rm devops-backend || true
-            docker run -d --restart unless-stopped --name devops-backend --env-file /home/ubuntu/backend/.env -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/devops-backend:latest
-
-            docker pull ${{ secrets.DOCKER_USERNAME }}/devops-frontend:latest
-            docker stop devops-frontend || true
-            docker rm devops-frontend || true
-            docker run -d --restart unless-stopped --name devops-frontend -p 80:80 ${{ secrets.DOCKER_USERNAME }}/devops-frontend:latest
+            cd ~/app
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker image prune -f
