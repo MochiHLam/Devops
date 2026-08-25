@@ -1,6 +1,6 @@
 services:
   backend:
-    build: ./backend
+    image: docker2309/devops-backend:latest
     container_name: devops-backend
     restart: unless-stopped
     ports:
@@ -9,7 +9,7 @@ services:
       - ./backend/.env
 
   frontend:
-    build: ./frontend
+    image: docker2309/devops-frontend:latest
     container_name: devops-frontend
     restart: unless-stopped
     ports:
