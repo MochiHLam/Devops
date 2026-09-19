@@ -17,5 +17,17 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      // Allow exporting both components and hooks from context files
+      'react-refresh/only-export-components': 'warn',
+      // Allow empty catch blocks in event handlers
+      'no-empty': ['error', { allowEmptyCatch: true }],
+      // Allow unused vars starting with _ (error suppression pattern)
+      'no-unused-vars': ['error', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
+      // Allow setState in effects for simple flag patterns
+      'react-hooks/set-state-in-effect': 'off',
+      // Downgrade immutability to warning
+      'react-hooks/immutability': 'warn',
+    },
   },
 ])

@@ -1,12 +1,133 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans bg-shopee-bg text-gray-800 text-sm;
+    min-height: 100vh;
+  }
+  a { @apply no-underline; }
+  img { @apply block max-w-full; }
 }
 
-body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #0f0f0f;
-  color: #ececec;
-  min-height: 100vh;
+@layer components {
+  /* ── Buttons ─────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded text-sm font-medium cursor-pointer transition-all duration-200 border-0 whitespace-nowrap;
+  }
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30;
+  }
+  .btn-outline {
+    @apply bg-transparent text-primary border border-primary hover:bg-primary-50;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-gray-500 border border-gray-200 hover:bg-gray-50;
+  }
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600;
+  }
+  .btn-success {
+    @apply bg-green-500 text-white hover:bg-green-600;
+  }
+  .btn-sm   { @apply px-3.5 py-1.5 text-xs; }
+  .btn-lg   { @apply px-7 py-3 text-base font-semibold; }
+  .btn-full { @apply w-full; }
+  .btn:disabled { @apply opacity-50 cursor-not-allowed translate-y-0 shadow-none; }
+
+  /* ── Cards ───────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-lg shadow-card overflow-hidden transition-shadow duration-200;
+  }
+  .card:hover { @apply shadow-md; }
+
+  /* ── Form ────────────────────────────────────────────── */
+  .form-input, .form-select, .form-textarea {
+    @apply w-full px-3.5 py-2.5 border border-gray-200 rounded text-sm text-gray-800 bg-white outline-none transition-all duration-200;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    @apply border-primary ring-2 ring-primary/10;
+  }
+  .form-textarea { @apply resize-y min-h-24; }
+  .form-label { @apply text-xs font-medium text-gray-500 block mb-1.5; }
+  .form-group { @apply flex flex-col gap-1.5; }
+
+  /* ── Badge ───────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-red    { @apply bg-red-100 text-red-700; }
+  .badge-green  { @apply bg-green-100 text-green-700; }
+  .badge-blue   { @apply bg-blue-100 text-blue-700; }
+  .badge-yellow { @apply bg-yellow-100 text-yellow-700; }
+  .badge-gray   { @apply bg-gray-100 text-gray-600; }
+
+  /* ── Table ───────────────────────────────────────────── */
+  .table-wrap { @apply overflow-x-auto; }
+  .table { @apply w-full border-collapse text-sm; }
+  .table th {
+    @apply text-left px-4 py-3 bg-gray-50 border-b-2 border-gray-100 font-semibold text-gray-500 whitespace-nowrap;
+  }
+  .table td { @apply px-4 py-3 border-b border-gray-100 align-middle; }
+  .table tbody tr:hover td { @apply bg-gray-50; }
+
+  /* ── Price ───────────────────────────────────────────── */
+  .price { @apply text-primary font-bold; }
+
+  /* ── Section title ───────────────────────────────────── */
+  .section-title {
+    @apply text-sm font-bold text-gray-800 px-4 py-3.5 border-b border-gray-100 flex items-center gap-2;
+  }
+
+  /* ── Spinner ─────────────────────────────────────────── */
+  .spinner {
+    @apply w-8 h-8 rounded-full border-4 border-gray-200 border-t-primary animate-spin;
+  }
+  .loading-center {
+    @apply flex justify-center items-center p-16;
+  }
+
+  /* ── Empty state ─────────────────────────────────────── */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 px-5 text-gray-400 text-center gap-3;
+  }
+
+  /* ── Product grid ────────────────────────────────────── */
+  .product-grid {
+    @apply grid gap-3;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  /* ── Page content (offset navbar) ───────────────────── */
+  .page-content { @apply pt-14 min-h-screen; }
+
+  /* ── Animations ──────────────────────────────────────── */
+  .fade-in { animation: fadeIn 0.3s ease; }
+  .slide-down { animation: slideDown 0.2s ease; }
+
+  /* ── Status colors ───────────────────────────────────── */
+  .status-badge-pending   { @apply badge badge-yellow; }
+  .status-badge-confirmed { @apply badge badge-blue; }
+  .status-badge-shipping  { @apply badge badge-red; }
+  .status-badge-delivered { @apply badge badge-green; }
+  .status-badge-cancelled { @apply badge badge-gray; }
+}
+
+@layer utilities {
+  .scrollbar-hide { scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: none; }
 }
